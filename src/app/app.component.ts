@@ -9,6 +9,12 @@ import { AppState } from './app-state';
 
     <button (click)="increment()">Increment</button>
     <button (click)="decrement()">Decrement</button>
+
+    <br />
+    <br />
+    <br />
+
+    <app-jedi-list></app-jedi-list>
   `,
   styleUrls: ['./app.component.css']
 })
