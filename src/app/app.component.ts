@@ -5,10 +5,7 @@ import { AppState } from './app-state';
 @Component({
   selector: 'app-root',
   template: `
-    {{ counter$ | async }}
-
-    <button (click)="increment()">Increment</button>
-    <button (click)="decrement()">Decrement</button>
+    <app-counter></app-counter>
 
     <br />
     <br />
@@ -19,17 +16,5 @@ import { AppState } from './app-state';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  counter$;
 
-  constructor(private store: Store<AppState>) {
-    this.counter$ = store.select('counter');
-  }
-
-  increment() {
-    this.store.dispatch({ type: 'INCREMENT' });
-  }
-
-  decrement() {
-    this.store.dispatch({ type: 'DECREMENT' });
-  }
 }

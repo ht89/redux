@@ -24,8 +24,8 @@ export class JediListComponent implements OnInit {
   counter = 0;
   newJedi = '';
 
-  constructor(private store: Store<AppState>) {
-    this.list$ = store.select('jediList');
+  constructor(private store: Store<any>) {
+    this.list$ = store.select(state => state.jediList.data);
   }
 
   ngOnInit() { }

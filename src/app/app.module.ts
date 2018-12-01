@@ -3,9 +3,8 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
-import { counterReducer } from './reducer';
-import { jediListReducer } from './jedi/jedi-list/jedi-list.reducer';
 import { JediModule } from './jedi/jedi.module';
+import { CounterModule } from './counter/counter.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +12,8 @@ import { JediModule } from './jedi/jedi.module';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({
-      counter: counterReducer,
-      jediList: jediListReducer
-    }),
+    StoreModule.forRoot({}),
+    CounterModule,
     JediModule
   ],
   providers: [],
