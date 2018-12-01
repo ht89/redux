@@ -1,4 +1,6 @@
-export const counterReducer = (state = 0, action) => {
+import { ActionReducerMap } from '@ngrx/store';
+
+const counterReducer = (state = 0, action) => {
   switch (action.type) {
     case 'INCREMENT':
       return state + 1;
@@ -8,4 +10,13 @@ export const counterReducer = (state = 0, action) => {
       return state;
   }
 };
+
+export interface CounterState {
+  data: number;
+}
+
+export const reducer: ActionReducerMap<CounterState> = {
+  data: counterReducer
+};
+
 
