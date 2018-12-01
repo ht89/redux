@@ -1,4 +1,4 @@
-import { ADD_JEDI, REMOVE_JEDI, LOAD_JEDIS } from './jedi.contants';
+import { ADD_JEDI, REMOVE_JEDI, LOAD_JEDIS } from './jedi-list.contants';
 
 export const addJedi = (id, name) => ({
   type: ADD_JEDI,

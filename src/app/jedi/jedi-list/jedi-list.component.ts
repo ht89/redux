@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Jedi } from './jedi.model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AppState } from '../app-state';
-import { addJedi, removeJedi, loadJedis } from './jedi.actions';
+import { AppState } from '../../app-state';
+import { addJedi, removeJedi, loadJedis } from './jedi-list.actions';
 
 @Component({
   selector: 'app-jedi-list',
