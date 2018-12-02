@@ -8,6 +8,32 @@ import { JediModule } from './jedi/jedi.module';
 import { CounterModule } from './counter/counter.module';
 import { ProductModule } from './product/product.module';
 import { EffectsModule } from '@ngrx/effects';
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { User } from './user/user.model';
+import { ActionPayload } from './interfaces';
+
+export interface State extends EntityState<User> {
+  selectedUserId: number | null;
+}
+
+const userAdapter: EntityAdapter<User> = createEntityAdapter<User>();
+
+const initialState: State = {
+  ids: [],
+  entities: {},
+  selectedUserId: null
+};
+
+export const initial = userAdapter.getInitialState(initialState);
+
+const userReducer = (state = initial, action: ActionPayload<User>): State => {
+  switch (action.type) {
+    case 'ADD_USER':
+      return userAdapter.addOne(action.payload, state);
+    default:
+      return state;
+  }
+};
 
 @NgModule({
   declarations: [
@@ -15,7 +41,9 @@ import { EffectsModule } from '@ngrx/effects';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({
+      users: userReducer
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25 // retain the last 25 states
     }),
