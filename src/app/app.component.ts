@@ -12,6 +12,12 @@ import { AppState } from './app-state';
     <br />
 
     <app-jedi-list></app-jedi-list>
+
+    <br />
+    <br />
+    <br />
+
+    <app-products></app-products>
   `,
   styleUrls: ['./app.component.css']
 })

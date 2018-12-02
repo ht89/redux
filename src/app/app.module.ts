@@ -6,6 +6,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
 import { JediModule } from './jedi/jedi.module';
 import { CounterModule } from './counter/counter.module';
+import { ProductModule } from './product/product.module';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,10 @@ import { CounterModule } from './counter/counter.module';
     StoreDevtoolsModule.instrument({
       maxAge: 25 // retain the last 25 states
     }),
+    EffectsModule.forRoot([]),
     CounterModule,
-    JediModule
+    JediModule,
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]
