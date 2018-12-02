@@ -21,7 +21,7 @@ import { AppState } from 'src/app/app-state';
 export class CounterComponent implements OnInit {
   counter$;
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<AppState>) {
     this.counter$ = store.select(state => state.counter.data);
   }
 
