@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { EditUserComponent } from './user/edit-user.component';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { RouterModule } from '@angular/router';
+import { RoutingEffects } from './routing.effects';
 
 export interface State extends EntityState<User> {
   selectedUserId: number | null;
@@ -65,7 +66,9 @@ const userReducer = (state = initial, action: ActionPayload<User>): State => {
     StoreDevtoolsModule.instrument({
       maxAge: 25 // retain the last 25 states
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([
+      RoutingEffects
+    ]),
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router' // name of reducer key
     }),
