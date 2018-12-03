@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './app-state';
 import { map } from 'rxjs/operators';
+import { gotoProducts } from './routing.actions';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,7 @@ import { map } from 'rxjs/operators';
     </div>
 
     <div>
-      <a routerLink="/products">Products</a>
+      <button (click)="navigateToProducts()">Products</button>
     </div>
 
     <div>
@@ -101,5 +102,9 @@ export class AppComponent {
       type: 'DELETE_USER',
       payload: { id }
     });
+  }
+
+  navigateToProducts() {
+    this.store.dispatch(gotoProducts(1));
   }
 }
