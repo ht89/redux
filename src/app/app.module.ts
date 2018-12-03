@@ -40,6 +40,8 @@ const userReducer = (state = initial, action: ActionPayload<User>): State => {
         },
         state
       );
+    case 'DELETE_USER':
+      return userAdapter.removeOne(action.payload.id, state);
     default:
       return state;
   }

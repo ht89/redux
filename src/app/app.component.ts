@@ -25,6 +25,8 @@ import { map } from 'rxjs/operators';
       {{ user.name }}
 
       <app-edit-user [user]="user" (save)="update($event)"></app-edit-user>
+
+      <button (click)="remove(user.id)">Remove</button>
     </div>
 
     <div>
@@ -77,6 +79,15 @@ export class AppComponent {
     this.store.dispatch({
       type: 'UPDATE_USER',
       payload: user
+    });
+  }
+
+  remove(id) {
+    console.log('removing', id);
+
+    this.store.dispatch({
+      type: 'DELETE_USER',
+      payload: { id }
     });
   }
 }
