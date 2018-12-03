@@ -31,8 +31,7 @@ import { map } from 'rxjs/operators';
       <input [(ngModel)]="user" />
       <button (click)="add()">Add</button>
     </div>
-  `,
-  styleUrls: ['./app.component.css']
+  `
 })
 export class AppComponent {
   users$;
