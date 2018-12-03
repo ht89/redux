@@ -49,6 +49,10 @@ export class AppComponent {
 
     this.users$
       .subscribe(data => console.log('users', data));
+
+    this.store
+        .select(state => state.router)
+        .subscribe(route => console.log('router obj', route));
   }
 
   toArray(obj) {
