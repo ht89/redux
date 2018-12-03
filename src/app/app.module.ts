@@ -13,9 +13,10 @@ import { User } from './user/user.model';
 import { ActionPayload } from './interfaces';
 import { FormsModule } from '@angular/forms';
 import { EditUserComponent } from './user/edit-user.component';
-import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
+import { StoreRouterConnectingModule, routerReducer, RouterStateSerializer } from '@ngrx/router-store';
 import { RouterModule } from '@angular/router';
 import { RoutingEffects } from './routing.effects';
+import { RoutingSerialiser } from './routing-serialiser';
 
 export interface State extends EntityState<User> {
   selectedUserId: number | null;
@@ -76,7 +77,9 @@ const userReducer = (state = initial, action: ActionPayload<User>): State => {
     JediModule,
     ProductModule
   ],
-  providers: [],
+  providers: [
+    { provide: RouterStateSerializer, useClass: RoutingSerialiser }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
