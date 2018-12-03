@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { User } from './user/user.model';
 import { ActionPayload } from './interfaces';
+import { FormsModule } from '@angular/forms';
 
 export interface State extends EntityState<User> {
   selectedUserId: number | null;
@@ -41,6 +42,7 @@ const userReducer = (state = initial, action: ActionPayload<User>): State => {
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     StoreModule.forRoot({
       users: userReducer
     }),

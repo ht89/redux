@@ -24,11 +24,18 @@ import { map } from 'rxjs/operators';
       *ngFor="let user of users$ | async">
       {{ user.name }}
     </div>
+
+    <div>
+      <input [(ngModel)]="user" />
+      <button (click)="add()">Add</button>
+    </div>
   `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   users$;
+  user;
+  id = 1;
 
   constructor(private store: Store<AppState>) {
     this.users$ = this.store
@@ -38,7 +45,7 @@ export class AppComponent {
       );
 
     this.users$
-      .subscribe(data => console.log(data));
+      .subscribe(data => console.log('users', data));
   }
 
   toArray(obj) {
@@ -48,7 +55,18 @@ export class AppComponent {
     }
 
     const keys = Object.keys(obj);
-    keys.map(key => obj[key]);
+    return keys.map(key => obj[key]);
+  }
 
+  add() {
+    const newUser = {
+      id: this.id++,
+      name: this.user
+    };
+
+    this.store.dispatch({
+      type: 'ADD_USER',
+      payload: newUser
+    });
   }
 }
