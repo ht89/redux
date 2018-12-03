@@ -12,6 +12,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { User } from './user/user.model';
 import { ActionPayload } from './interfaces';
 import { FormsModule } from '@angular/forms';
+import { EditUserComponent } from './user/edit-user.component';
 
 export interface State extends EntityState<User> {
   selectedUserId: number | null;
@@ -31,6 +32,15 @@ const userReducer = (state = initial, action: ActionPayload<User>): State => {
   switch (action.type) {
     case 'ADD_USER':
       return userAdapter.addOne(action.payload, state);
+    case 'UPDATE_USER':
+      console.log(action);
+      return userAdapter.updateOne(
+        {
+          id: action.payload.id,
+          changes: action.payload
+        },
+        state
+      );
     default:
       return state;
   }
@@ -39,6 +49,7 @@ const userReducer = (state = initial, action: ActionPayload<User>): State => {
 @NgModule({
   declarations: [
     AppComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

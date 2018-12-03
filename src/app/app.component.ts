@@ -23,6 +23,8 @@ import { map } from 'rxjs/operators';
     <div style="border: solid 1px black; padding: 10px;"
       *ngFor="let user of users$ | async">
       {{ user.name }}
+
+      <app-edit-user [user]="user" (save)="update($event)"></app-edit-user>
     </div>
 
     <div>
@@ -67,6 +69,15 @@ export class AppComponent {
     this.store.dispatch({
       type: 'ADD_USER',
       payload: newUser
+    });
+  }
+
+  update(user) {
+    console.log('updating', user);
+
+    this.store.dispatch({
+      type: 'UPDATE_USER',
+      payload: user
     });
   }
 }
