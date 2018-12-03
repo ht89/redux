@@ -33,7 +33,6 @@ const userReducer = (state = initial, action: ActionPayload<User>): State => {
     case 'ADD_USER':
       return userAdapter.addOne(action.payload, state);
     case 'UPDATE_USER':
-      console.log(action);
       return userAdapter.updateOne(
         {
           id: action.payload.id,
