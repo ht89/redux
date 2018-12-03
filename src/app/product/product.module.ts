@@ -6,15 +6,27 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './product.component';
 import { StoreModule } from '@ngrx/store';
 import { ProductReducers } from './product.reducer';
+import { ProductsDetailComponent } from './products-detail.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [ProductsComponent],
+  declarations: [ProductsComponent, ProductsDetailComponent],
   imports: [
     CommonModule,
     StoreModule.forFeature('featureProducts', ProductReducers),
     EffectsModule.forFeature([ProductEffects]),
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forChild([
+      {
+        path: 'products',
+        component: ProductsComponent
+      },
+      {
+        path: 'products/:id',
+        component: ProductsDetailComponent
+      }
+    ])
   ],
-  exports: [ProductsComponent]
+  exports: [ProductsComponent, ProductsDetailComponent]
 })
 export class ProductModule { }

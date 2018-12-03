@@ -33,6 +33,14 @@ import { map } from 'rxjs/operators';
       <input [(ngModel)]="user" />
       <button (click)="add()">Add</button>
     </div>
+
+    <div>
+      <a routerLink="/products">Products</a>
+    </div>
+
+    <div>
+      <a [routerLink]="['/products/1']" [queryParams]="{page: 1}">Product Id 1</a>
+    </div>
   `
 })
 export class AppComponent {
