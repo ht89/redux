@@ -17,6 +17,7 @@ import { StoreRouterConnectingModule, routerReducer, RouterStateSerializer } fro
 import { RouterModule } from '@angular/router';
 import { RoutingEffects } from './routing.effects';
 import { RoutingSerialiser } from './routing-serialiser';
+import { JedisComponent } from './jedis/jedis.component';
 
 export interface State extends EntityState<User> {
   selectedUserId: number | null;
@@ -54,7 +55,8 @@ const userReducer = (state = initial, action: ActionPayload<User>): State => {
 @NgModule({
   declarations: [
     AppComponent,
-    EditUserComponent
+    EditUserComponent,
+    JedisComponent
   ],
   imports: [
     BrowserModule,
